@@ -31,7 +31,8 @@ export default function Navigations () {
                 setNavigationUi({
                     group, mesh, line, lineGeometry, lineMaterial,
                     lineVertexPositions: [
-                        new THREE.Vector3(128.5, 150.0, 153.0), mesh.position
+                        new THREE.Vector3(128.5, 150.0, 153.0),
+                        new THREE.Vector3(mesh.position.x, mesh.position.y - 25, mesh.position.z)
                     ]
                 })
                 break
@@ -40,7 +41,8 @@ export default function Navigations () {
                 setNavigationUi({
                     group, mesh, line, lineGeometry, lineMaterial,
                     lineVertexPositions: [
-                        new THREE.Vector3(0, 303.0, - 143.5), mesh.position
+                        new THREE.Vector3(0, 303.0, - 143.5),
+                        new THREE.Vector3(mesh.position.x, mesh.position.y - 25, mesh.position.z)
                     ]
                 })
                 break

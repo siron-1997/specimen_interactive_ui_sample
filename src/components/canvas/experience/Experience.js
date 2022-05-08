@@ -45,7 +45,7 @@ export default function Experience (canvas) {
         models,
         navigations
     )
-    console.log('navigations', navigations)
+    console.log('models', models)
     // レンダラー
     const renderer = Renderer(canvas, sizes)
     // コントローラー
@@ -54,7 +54,7 @@ export default function Experience (canvas) {
     // リサイズ
     resize(sizes, camera, renderer)
     // レイキャスター
-    const raycaster = Raycast(mouse, camera, navigations)
+    const raycaster = Raycast(mouse, camera, navigations, models)
     // アニメーション
     const animate = () => {
         controls.update()
