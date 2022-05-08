@@ -12,14 +12,17 @@ export default function Experience (canvas) {
     // ライト
     const [
         ambientLight,
-        directionalLight, directionalLightHelper, directionalLightCameraHelper,
-        spotLight, spotLightHelper, spotLightCameraHelper
+        directionalLight,
+        directionalLightHelper,
+        directionalLightCameraHelper,
+        spotLight,
+        spotLightHelper,
+        spotLightCameraHelper
     ] = Lights()
     // 床
     const floor = Floor()
     // モデル
     const models = Models()
-    console.log('models', models)
     // 霧
     const fog = new THREE.Fog('#4b0082', 300, 5000)
     scene.fog = fog
@@ -27,8 +30,13 @@ export default function Experience (canvas) {
     scene.add(
         camera,
         ambientLight,
-        directionalLight, directionalLight.shadow.camera, directionalLightHelper, directionalLightCameraHelper,
-        spotLight, spotLightHelper, spotLightCameraHelper,
+        directionalLight,
+        directionalLight.shadow.camera,
+        directionalLightHelper,
+        directionalLightCameraHelper,
+        spotLight,
+        spotLightHelper,
+        spotLightCameraHelper,
         floor,
         models
     )

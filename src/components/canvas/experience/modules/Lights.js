@@ -22,28 +22,24 @@ export default function Lights () {
     directionalLight.shadow.camera.left = - shadowValue
     directionalLight.shadow.camera.bottom = - shadowValue
     directionalLight.shadow.camera.right = shadowValue
-    directionalLightHelper.visible = true
-    directionalLightCameraHelper.visible = true
+    directionalLightHelper.visible = false
+    directionalLightCameraHelper.visible = false
 
-    const spotLight = new SpotLight('#00ffff', 10),
+    const spotLight = new SpotLight('#00ffff', 450),
           spotLightHelper = new SpotLightHelper(spotLight),
           spotLightCameraHelper = new CameraHelper(spotLight.shadow.camera)
 
     spotLight.castShadow = true
-    spotLight.shadow.radius = 10
-    spotLight.shadow.normalBias = 0.25
+    spotLight.shadow.radius = 100
+    spotLight.shadow.bias = 0.000001
+    spotLight.shadow.normalBias = 0.05
     spotLight.shadow.mapSize.set(mapValue, mapValue)
     spotLight.shadow.camera.near = 1
     spotLight.shadow.camera.far = 10000
-    spotLight.position.set(250, 600, 300)
-    // spotLight.rotation.set(
-    //     45 * Math.Pi / 180,
-    //     45 * Math.Pi / 180,
-    //     0
-    // )
-    spotLightHelper.visible = true
-    spotLightCameraHelper.visible = true
-    spotLight.matrixWorldNeedsUpdate = true
+    spotLight.angle = 45 * Math.PI / 180
+    spotLight.position.set(250, 550, 300)
+    spotLightHelper.visible = false
+    spotLightCameraHelper.visible = false
     spotLightHelper.update()
     spotLightCameraHelper.update()
 
