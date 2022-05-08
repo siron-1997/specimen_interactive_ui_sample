@@ -19,7 +19,6 @@ export default function Experience (canvas) {
     const floor = Floor()
     // モデル
     const models = Models()
-    console.log('models', models)
     // 霧
     const fog = new THREE.Fog('#4b0082', 300, 5000)
     scene.fog = fog
