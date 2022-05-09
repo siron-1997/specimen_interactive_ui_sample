@@ -1,10 +1,9 @@
 export default function setNavigationUi ({
-    group, mesh, line, lineGeometry, lineMaterial, meshPositions, lineVertexPositions
+    group, sprite, line, lineGeometry, lineMaterial, lineVertexPositions
 }) {
-    group.name = `${mesh.name} container`
-    // mesh.position.set(meshPositions.x, meshPositions.y, meshPositions.z)
+    group.name = `${sprite.name} container`
     line.geometry = lineGeometry.setFromPoints(lineVertexPositions)
     line.material = lineMaterial
-    line.name = `${mesh.name} line`
-    group.add(mesh, line)
+    line.name = `${sprite.name} line`
+    group.add(sprite, line)
 }

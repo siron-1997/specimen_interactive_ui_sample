@@ -8,15 +8,9 @@ export default function Navigations () {
     navigations.forEach(navigation => {
         const group = new THREE.Group()
         const texture = textureLoader.load(navigation.path)
-        const geometry = new THREE.PlaneBufferGeometry(200, 50)
-        const material = new THREE.MeshBasicMaterial({
-            map: texture,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 1
-        })
-        const mesh = new THREE.Mesh(geometry, material)
-        mesh.name = navigation.name
+        const spriteMaterial = new THREE.SpriteMaterial({ map: texture })
+        const sprite = new THREE.Sprite(spriteMaterial)
+        sprite.name = navigation.name
         const lineGeometry = new THREE.BufferGeometry()
         const lineMaterial = new THREE.LineBasicMaterial({
             color: '#acfff0',
@@ -24,25 +18,26 @@ export default function Navigations () {
             opacity: 0.85
         })
         const line = new THREE.Line()
-        switch (mesh.name) {
+        switch (sprite.name) {
             case 'door':
-                mesh.position.set(128.5 + 200, 153.0 + 200, 153.0 + 100)
-                mesh.geometry.parameters.width = 120
+                sprite.scale.set(120, 50, 0)
+                sprite.position.set(128.5 + 200, 153.0 + 200, 153.0 + 100)
                 setNavigationUi({
-                    group, mesh, line, lineGeometry, lineMaterial,
+                    group, sprite, line, lineGeometry, lineMaterial,
                     lineVertexPositions: [
                         new THREE.Vector3(128.5, 150.0, 153.0),
-                        new THREE.Vector3(mesh.position.x, mesh.position.y - 25, mesh.position.z)
+                        new THREE.Vector3(sprite.position.x, sprite.position.y - 25, sprite.position.z)
                     ]
                 })
                 break
             case 'top_cover':
-                mesh.position.set(0, 303.0 + 100, - 143.5 - 100)
+                sprite.scale.set(200, 50, 0)
+                sprite.position.set(0, 303.0 + 100, - 143.5 - 100)
                 setNavigationUi({
-                    group, mesh, line, lineGeometry, lineMaterial,
+                    group, sprite, line, lineGeometry, lineMaterial,
                     lineVertexPositions: [
                         new THREE.Vector3(0, 303.0, - 143.5),
-                        new THREE.Vector3(mesh.position.x, mesh.position.y - 25, mesh.position.z)
+                        new THREE.Vector3(sprite.position.x, sprite.position.y - 25, sprite.position.z)
                     ]
                 })
                 break

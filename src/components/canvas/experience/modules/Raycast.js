@@ -2,9 +2,9 @@ import { Raycaster } from 'three'
 import gsap from 'gsap'
 import { setChangeRad } from '../utils'
 
-export default function Raycast (mouse, camera, navigations, models) {
+export default function Raycast (canvas, mouse, camera, navigations, models) {
     const raycaster = new Raycaster()
-    window.addEventListener('mousedown', () => {
+    canvas.addEventListener('mousedown', () => {
         raycaster.setFromCamera(mouse, camera)
         const intersects = raycaster.intersectObjects(navigations.children)
         if (intersects.length !== 0) {
@@ -28,6 +28,15 @@ export default function Raycast (mouse, camera, navigations, models) {
                     }
                 }
             })
+        }
+    })
+    canvas.addEventListener('mousemove', () => {
+        raycaster.setFromCamera(mouse, camera)
+        const intersects = raycaster.intersectObjects(navigations.children)
+        if (intersects.length > 0) {
+            canvas.style.cursor = 'pointer'
+        } else {
+            canvas.style.cursor = 'default'
         }
     })
 

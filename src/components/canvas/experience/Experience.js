@@ -54,7 +54,7 @@ export default function Experience (canvas) {
     // リサイズ
     resize(sizes, camera, renderer)
     // レイキャスター
-    const raycaster = Raycast(mouse, camera, navigations, models)
+    const raycaster = Raycast(canvas, mouse, camera, navigations, models)
     // アニメーション
     const animate = () => {
         controls.update()
